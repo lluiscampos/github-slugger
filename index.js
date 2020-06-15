@@ -5,6 +5,7 @@ module.exports = BananaSlug
 var own = Object.hasOwnProperty
 var whitespace = /\s/g
 var specials = /[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,./:;<=>?@[\]^`{|}~’]/g
+var multipleDashes = /--*/g
 
 function BananaSlug () {
   var self = this
@@ -51,6 +52,7 @@ function slugger (string, maintainCase) {
     .replace(specials, '')
     .replace(emoji(), '')
     .replace(whitespace, '-')
+    .replace(multipleDashes, '-')
 }
 
 BananaSlug.slug = slugger
